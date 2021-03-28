@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Challenge</string>
+    <string name="unable_to_get_list">Unable to Get List</string>
+    <string name="track_name">Track Name : %1$s</string>
+    <string name="price">Price : %.2f %2$s</string>
+    <string name="date">Date Released : %1$s</string>
+    <string name="genre">Genre : %1$s</string>
+    <string name="type">Type : %1$s</string>
+    <string name="visitStatus">You visited this item on %1$s</string>
+    <string name="artist">Artist : %1$s</string>
+    <string name="visitedTimes">Times Visited : %1$s</string>
+    <string name="not_specified">Not specified</string>
+    <string name="details">Details</string>
+    <string name="havent_check_item">You haven\'t checked this item</string>
+</resources>
