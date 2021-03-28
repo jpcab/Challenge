@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -97,22 +98,10 @@ class MovieAdapter : ListAdapter<Movie, MovieAdapter.MovieViewHolder> {
             movieClickListener.onItemClick(movie)
         }
 
-
-        var circularProgressDrawable = CircularProgressDrawable(context)
-        circularProgressDrawable.setColorSchemeColors(
-            R.color.colorPrimary,
-            R.color.colorPrimaryDark,
-            R.color.colorAccent
-        )
-        circularProgressDrawable.centerRadius = 30f
-        circularProgressDrawable.strokeWidth = 5f
-        circularProgressDrawable.start()
-
         Glide
             .with(context)
             .load(movie.artworkUrl60)
             .centerCrop()
-            .placeholder(circularProgressDrawable)
             .error(R.drawable.ic_error)
             .listener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(
@@ -121,7 +110,7 @@ class MovieAdapter : ListAdapter<Movie, MovieAdapter.MovieViewHolder> {
                     target: Target<Drawable>?,
                     isFirstResource: Boolean
                 ): Boolean {
-                    circularProgressDrawable.stop()
+                    holder.progress.visibility = GONE
                     return false
                 }
 
@@ -132,7 +121,7 @@ class MovieAdapter : ListAdapter<Movie, MovieAdapter.MovieViewHolder> {
                     dataSource: DataSource?,
                     isFirstResource: Boolean
                 ): Boolean {
-                    circularProgressDrawable.stop()
+                    holder.progress.visibility = GONE
                     return false
                 }
             })
@@ -146,5 +135,6 @@ class MovieAdapter : ListAdapter<Movie, MovieAdapter.MovieViewHolder> {
         val artwork = itemView.artwork
         val itemBounds = itemView.itemBounds
         val visitStatus = itemView.visitStatus
+        val progress = itemView.progress
     }
 }
